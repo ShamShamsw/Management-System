@@ -1,0 +1,98 @@
+# Inventory Management System
+
+## Overview
+
+This Python script implements an inventory management system that allows users to manage a store or warehouse's inventory. The system reads and writes inventory data from a JSON file (inventory.json by default), enabling persistent storage across program runs. The script supports adding, removing, displaying, and searching for items in the inventory.
+
+## Features
+
+Add Item: Add a new item to the inventory or update the quantity of an existing item.
+Remove Item: Remove an item from the inventory.
+Display Inventory: View all items currently in the inventory, including their price and quantity.
+Search Item: Search for a specific item by name to view its details.
+
+Persistent Storage: Inventory data is saved and loaded from a JSON file.
+
+## Requirements
+
+Python 3.x
+json module (which is part of Python’s standard library)
+
+# Usage
+
+## Running the Script
+
+To run the Inventory Management System, execute the script. The system will load the current inventory from a JSON file (or start with an empty inventory if the file doesn’t exist).
+
+python inventory_system.py
+
+## Menu Options
+
+Upon running the program, the following options are presented to the user:
+
+Add Item: Prompts the user to input the item name, price, and quantity. If the item already exists, the quantity is updated.
+Remove Item: Removes an item from the inventory by name.
+Display Inventory: Displays a list of all items in the inventory with their price and quantity in stock.
+Search Item: Allows the user to search for an item by name to view its details.
+Exit: Exits the program.
+
+## Example Interaction
+
+Inventory Management System
+1. Add Item
+2. Remove Item
+3. Display Inventory
+4. Search Item
+5. Exit
+Choose an option: 1
+Enter item name: Widget
+Enter item price: 9.99
+Enter quantity: 10
+Added 10 of Widget at $9.99 each.
+
+Inventory Management System
+1. Add Item
+2. Remove Item
+3. Display Inventory
+4. Search Item
+5. Exit
+Choose an option: 3
+
+Current Inventory:
+Widget: $9.99 - 10 in stock
+
+## Code Structure
+
+Inventory Class
+__init__(self, filename="inventory.json"): Initializes the inventory system with a filename to store the data (default is inventory.json). Loads the inventory from the file.
+load_inventory(self): Loads the inventory from the specified JSON file. If the file doesn't exist or is malformed, returns an empty inventory.
+save_inventory(self): Saves the current inventory to the specified JSON file.
+add_item(self, name, price, quantity): Adds a new item or updates an existing item’s quantity in the inventory.
+remove_item(self, name): Removes an item from the inventory.
+display_inventory(self): Displays the current inventory, showing the item name, price, and quantity in stock.
+search_item(self, name): Searches for an item by name and displays its details if found.
+
+## Main Function
+
+The main() function provides a user interface with options to manage the inventory. The system continuously prompts for input until the user chooses to exit.
+
+## File Format
+The inventory data is stored in a JSON file with the following structure:
+
+{
+  "item_name": {
+    "price": 12.99,
+    "quantity": 100
+  }
+}
+
+## Error Handling
+
+FileNotFoundError: If the inventory JSON file doesn’t exist, an empty inventory is initialized.
+json.JSONDecodeError: If the inventory file is corrupted or not a valid JSON file, an empty inventory is initialized.
+ValueError: If invalid input is provided for price or quantity, the program will prompt the user to enter valid values.
+
+## Customization
+
+You can change the filename for the inventory data by providing a different file name when initializing the Inventory class.
+You can also customize the functionality of the script by modifying the methods of the Inventory class.

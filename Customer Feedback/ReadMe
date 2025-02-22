@@ -1,0 +1,116 @@
+# Customer Feedback System
+
+## Overview
+
+The Customer Feedback System is a Python-based tool that allows businesses to create customer surveys, collect feedback, and analyze the results. The system stores survey questions and feedback responses in JSON files, providing an easy way to manage and analyze customer satisfaction data. This tool is designed to assist businesses in understanding customer experiences and identifying areas for improvement.
+
+## Features
+
+Create Survey: Allows the user to create custom surveys with multiple questions.
+Collect Feedback: Allows the user to collect customer feedback for a given survey.
+Analyze Feedback: Analyzes the feedback for each survey and provides a summary of the responses.
+Persistent Data: Surveys and feedback data are stored in JSON files for long-term storage.
+Simple Interaction: The system provides a command-line interface for easy interaction.
+
+## Requirements
+
+Python 3.x
+json module (part of Python’s standard library)
+datetime module (part of Python’s standard library)
+
+# Usage
+
+## Running the Script
+
+To run the Customer Feedback System, execute the script in your terminal. It will prompt you with a series of options to create surveys, collect feedback, or analyze the data.
+
+python customer_feedback.py
+
+## Menu Options
+
+The system provides the following options:
+
+create_survey: Create a new survey with a list of questions.
+collect_feedback: Collect customer feedback for a specific survey by answering the questions.
+analyze_feedback: Analyze the collected feedback and see how many responses were recorded for each survey.
+quit: Exit the program.
+
+## Example Interaction
+
+Choose an action: create_survey, collect_feedback, analyze_feedback, or quit: create_survey
+Enter survey name: Product Satisfaction
+Enter a question (or 'done' to finish): How satisfied are you with the product?
+Enter a question (or 'done' to finish): Would you recommend this product to others?
+Enter a question (or 'done' to finish): done
+Survey 'Product Satisfaction' created successfully!
+
+Choose an action: create_survey, collect_feedback, analyze_feedback, or quit: collect_feedback
+Enter survey name: Product Satisfaction
+How satisfied are you with the product?: Very Satisfied
+Would you recommend this product to others?: Yes
+Feedback recorded for survey 'Product Satisfaction'.
+
+Choose an action: create_survey, collect_feedback, analyze_feedback, or quit: analyze_feedback
+Feedback Analysis:
+Survey: Product Satisfaction, Total Responses: 1
+
+Choose an action: create_survey, collect_feedback, analyze_feedback, or quit: quit
+
+# Code Structure
+
+CustomerFeedbackSystem Class
+__init__(self, surveys_file="surveys.json", feedback_file="feedback.json"): Initializes the CustomerFeedbackSystem, loading survey data and feedback data from their respective files.
+load_data(self, filename): Loads data from the specified JSON file. If the file is not found or is corrupted, it returns an empty list.
+save_data(self, filename, data): Saves the data to the specified JSON file, ensuring the data is written in a readable format (pretty-printed).
+create_survey(self, survey_name, questions): Creates a new survey with a custom name and set of questions, saving it to the surveys data file.
+collect_feedback(self, survey_name, responses): Collects feedback for a specific survey, saving the responses and the timestamp of when the feedback was recorded.
+analyze_feedback(self): Analyzes the feedback for all surveys, providing a summary of the number of responses received for each survey.
+run(self): Main function that handles the user interactions for creating surveys, collecting feedback, analyzing feedback, or quitting the program.
+
+## Main Function
+
+The main() function serves as the entry point for interacting with the system. The user can create surveys, collect feedback, and analyze the responses by typing the corresponding action in the terminal.
+
+# File Format
+
+The system uses two JSON files to store data:
+
+## surveys.json
+The surveys data is stored as a list of survey objects. Each survey has a name and a list of questions:
+
+
+[
+  {
+    "survey_name": "Product Satisfaction",
+    "questions": [
+      "How satisfied are you with the product?",
+      "Would you recommend this product to others?"
+    ]
+  }
+]
+
+## feedback.json
+The feedback data is stored as a list of feedback entries. Each entry contains the survey name, the customer responses, and the date the feedback was recorded:
+
+[
+  {
+    "survey_name": "Product Satisfaction",
+    "responses": [
+      "Very Satisfied",
+      "Yes"
+    ],
+    "date": "2025-02-22 12:34:56.789123"
+  }
+]
+
+## Error Handling
+
+FileNotFoundError: If the surveys.json or feedback.json file is missing, the system will initialize empty survey or feedback data.
+json.JSONDecodeError: If the JSON files are corrupted or improperly formatted, the system will initialize empty survey or feedback data.
+Invalid Action: If the user enters an invalid action, the system will prompt them to choose a valid action.
+
+## Customization
+
+You can modify the survey creation process to include different question formats, such as multiple-choice or rating scales.
+You can extend the feedback analysis to compute satisfaction scores, average ratings, or identify trends over time.
+You can customize the file paths used for surveys and feedback data, allowing the system to work with different data sources.

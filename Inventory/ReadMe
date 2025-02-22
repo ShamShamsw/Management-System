@@ -61,7 +61,7 @@ Choose an option: 3
 Current Inventory:
 Widget: $9.99 - 10 in stock
 
-## Code Structure
+# Code Structure
 
 Inventory Class
 __init__(self, filename="inventory.json"): Initializes the inventory system with a filename to store the data (default is inventory.json). Loads the inventory from the file.
@@ -76,7 +76,7 @@ search_item(self, name): Searches for an item by name and displays its details i
 
 The main() function provides a user interface with options to manage the inventory. The system continuously prompts for input until the user chooses to exit.
 
-## File Format
+# File Format
 The inventory data is stored in a JSON file with the following structure:
 
 {

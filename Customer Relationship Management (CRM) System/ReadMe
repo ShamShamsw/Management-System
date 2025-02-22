@@ -1,0 +1,119 @@
+# Customer Relationship Management (CRM) System
+
+## Overview
+
+This Python script implements a Customer Relationship Management (CRM) system that allows businesses to manage their customers' profiles, record purchases, and track loyalty points. The data is saved and loaded from a JSON file (customers.json by default), ensuring persistence across program runs. The system includes functionalities to add, remove, record purchases, and view customer details.
+
+## Features
+
+Add Customer: Add a new customer with their contact information.
+Remove Customer: Remove a customer profile from the system.
+Record Purchase: Record a customer’s purchase, including the item and amount spent. Loyalty points are awarded based on the purchase amount (1 point per $10 spent).
+
+Display Customer: View a customer’s details, including contact info, loyalty points, and purchase history.
+Persistent Storage: Customer data is saved and loaded from a JSON file.
+
+## Requirements
+
+Python 3.x
+json module (which is part of Python’s standard library)
+
+## Usage
+
+## Running the Script
+
+To run the CRM System, execute the script. The system will load customer data from a JSON file (or start with an empty customer list if the file does not exist).
+
+python crm_system.py
+
+## Menu Options
+
+The program will present a menu with the following options:
+
+Add Customer: Prompts the user to enter the customer’s name and contact information, then adds them to the CRM.
+Remove Customer: Allows the user to remove a customer from the CRM by name.
+Record Purchase: Records a purchase made by a customer and updates their loyalty points based on the amount spent.
+Display Customer: Displays detailed information about a customer, including their contact info, loyalty points, and purchase history.
+Exit: Exits the program.
+
+## Example Interaction
+
+Customer Relationship Management System
+1. Add Customer
+2. Remove Customer
+3. Record Purchase
+4. Display Customer
+5. Exit
+Choose an option: 1
+Enter customer name: John Doe
+Enter contact information: john.doe@email.com
+Customer John Doe added successfully.
+
+Customer Relationship Management System
+1. Add Customer
+2. Remove Customer
+3. Record Purchase
+4. Display Customer
+5. Exit
+Choose an option: 3
+Enter customer name: John Doe
+Enter item purchased: Laptop
+Enter amount spent: 1200
+Purchase recorded for John Doe.
+
+Customer Relationship Management System
+1. Add Customer
+2. Remove Customer
+3. Record Purchase
+4. Display Customer
+5. Exit
+Choose an option: 4
+Enter customer name: John Doe
+
+Customer: John Doe
+Contact Info: john.doe@email.com
+Loyalty Points: 120
+Purchase History:
+ - Laptop: $1200.0
+
+# Code Structure
+
+## CRMSystem Class
+
+__init__(self, filename="customers.json"): Initializes the CRM system with a filename to store the customer data (default is customers.json). Loads customer data from the file.
+load_customers(self): Loads the customer data from the specified JSON file. If the file doesn't exist or is corrupted, it initializes an empty customer list.
+save_customers(self): Saves the current customer data to the JSON file.
+add_customer(self, name, contact_info): Adds a new customer to the system or shows an error if the customer already exists.
+remove_customer(self, name): Removes a customer from the system by their name.
+record_purchase(self, name, item, amount): Records a purchase made by the customer and updates their loyalty points. For every $10 spent, 1 loyalty point is added.
+display_customer(self, name): Displays detailed information for a customer, including their contact info, loyalty points, and purchase history.
+
+## Main Function
+
+The main() function provides a user interface that allows interaction with the CRM system. The menu allows users to add customers, remove them, record purchases, display customer details, and exit the program.
+
+# File Format
+
+The customer data is stored in a JSON file with the following structure:
+
+
+{
+  "customer_name": {
+    "contact_info": "customer@example.com",
+    "purchase_history": [
+      {"item": "Laptop", "amount": 1200}
+    ],
+    "loyalty_points": 120
+  }
+}
+
+## Error Handling
+
+FileNotFoundError: If the customer data JSON file does not exist, an empty customer list is initialized.
+json.JSONDecodeError: If the customer data file is corrupted or not a valid JSON, an empty customer list is initialized.
+ValueError: If the purchase amount entered is invalid, the system will prompt the user to enter a valid amount.
+
+## Customization
+
+You can change the filename for storing customer data by providing a different file name when initializing the CRMSystem class.
+You can customize the logic for loyalty points or add more attributes to customer profiles by modifying the methods in the CRMSystem class.
